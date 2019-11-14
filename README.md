@@ -30,7 +30,7 @@ lowbat > /dev/null 2>&1 &
 sudo make uninstall
 ```
 
-### See also
+## See also
 
 ```shell
 man 1 lowbat
