@@ -1,10 +1,10 @@
 #!/bin/sh
 
-##if [ $@ -lt 2 ]; then
-##	message="beep beep - low battery"
-##else
-##	message=$2
-##fi
+if [ $# -lt 2 ]; then
+	message="beep beep - low battery"
+else
+	message=$2
+fi
 
 notify() {
 	notify-send "Low battery" "Please plug in computer" -u critical -t 15000
