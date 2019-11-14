@@ -2,7 +2,7 @@
 
 # lowbat
 
-Very small script that runs in the background and warns you when your battery is low.
+Very small script that runs in the background and warns you when your battery is low until you plug your laptop in.
 
 ## Dependencies
 
@@ -19,7 +19,11 @@ cd lowbat
 sudo make clean install
 ```
 
-Next you must find a way to get the script running when loging in.
+Next you must find a way to get the script running when loging in. Add this to your startup programs manager of choice:
+
+```shell
+lowbat > /dev/null 2>&1 &
+```
 
 ## Uninstallation
 
