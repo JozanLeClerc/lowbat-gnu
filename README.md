@@ -4,6 +4,7 @@ Very small script that runs in the background and warns you when your battery is
 
 ## Dependencies
 
++ `make`
 + `libnotify`
 + `espeak`
 
