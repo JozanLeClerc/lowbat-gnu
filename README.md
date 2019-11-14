@@ -16,7 +16,7 @@ Open a terminal and run these commands:
 ```shell
 git clone https://github.com/JozanLeClerc/lowbat.git
 cd lowbat
-sudo make clean install
+sudo make install
 ```
 
 Next you must find a way to get the script running when loging in. Add this to your startup programs manager of choice:
