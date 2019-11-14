@@ -23,4 +23,6 @@ Next you must find a way to get the script running when loging in.
 
 ## Uninstallation
 
+```shell
 sudo make uninstall
+```
