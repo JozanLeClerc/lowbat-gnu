@@ -29,3 +29,9 @@ lowbat > /dev/null 2>&1 &
 ```shell
 sudo make uninstall
 ```
+
+### See also
+
+```shell
+man 1 lowbat
+```
