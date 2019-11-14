@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 notify() {
 	notify-send "Low battery" "Please plug in computer" -u critical -t 15000
