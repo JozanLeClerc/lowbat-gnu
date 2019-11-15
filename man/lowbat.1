@@ -1,22 +1,27 @@
 .\" Manpage for lowbat
 .\" Contact bousset.rudy@gmail.com to correct errors and typos.
-.TH lowbat 1 "14 Nov 2019" "1.0" "lowbat User Reference"
+.TH lowbat 1 "14 Nov 2019" "1.1" "lowbat User Reference"
 .SH NAME
 lowbat \- Lightweight battery warning utility
 .SH SYNOPSYS
 .B lowbat
-[OPTION]
+[\fB\-\-say\fR \fIMESSAGE\fR]
+[\fB\-\-silent\fR]
 .SH DESCRIPTION
-.B lowbat
-is a small script meant to be run in the background. It warns you using
-.B notify-send
+.BR lowbat
+is a small script meant to be run in the background.
+It warns you using
+.BR notify\-send
 and
-.B espeak
+.BR espeak
 when your battery is falling under 15%.
 .SH OPTIONS
 .TP
-.BR --silent
-disables espeak
+.BR \-\-say =\fIMESSAGE\fR
+Sets a custom message.
+.TP
+.BR \-\-silent
+Disables \fBespeak\fR.
 .SH BUGS
 No known bugs.
 .SH AUTHOR
