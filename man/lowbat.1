@@ -2,24 +2,20 @@
 .\" Contact bousset.rudy@gmail.com to correct errors and typos.
 .TH man 1 "14 Nov 2019" "1.0" "lowbat Reference"
 .SH NAME
-lowbat \- A lightweight battery warning daemon
+lowbat \- Lightweight battery warning utility
 .SH SYNOPSYS
-.B
-lowbat
+.B lowbat
+[OPTION]
 .SH DESCRIPTION
-.B
-lowbat
+.B lowbat
 is a small script meant to be run in the background. It warns you using
-.B
-notify-send
+.B notify-send
 and
-.B
-espeak
+.B espeak
 when your battery is falling under 15%.
 .SH OPTIONS
-.B
-lowbat
-does not take any options.
+.B lowbat
+does only take one option. You can enter a string as an as an argument. It will come as a replacement for the default warning message.
 .SH BUGS
 No known bugs.
 .SH AUTHOR
