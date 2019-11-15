@@ -29,23 +29,14 @@ lowbat > /dev/null 2>&1 &
 
 Two options are available:
 
-+ `--say [MESSAGE]`
-+ `--silent`
++ `--say [MESSAGE]` allows you to set your own warning message lowbat is active.
++ `--silent` disables audio warnings.
 
-### Definitions
-
-`--say "message"` will allow you to set your own warning message lowbat is active.
-
-#### Example:
+#### Examples of use:
 
 ```shell
 lowbat --say "your custom message" > /dev/null 2>&1
 ```
---------
-
-`--silent` disables audio warnings.
-
-#### Example:
 
 ```shell
 lowbat --silent > /dev/null 2>&1
