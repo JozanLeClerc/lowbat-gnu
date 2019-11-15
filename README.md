@@ -19,7 +19,7 @@ cd lowbat
 sudo make install
 ```
 
-Next you must find a way to get the script running when loging in. Add this to your startup programs manager/rc file of choice:
+Next you must find a way to get the script running right after loging in. Add this to your startup programs manager/rc file of choice:
 
 ```shell
 lowbat > /dev/null 2>&1 &
