@@ -8,19 +8,19 @@ if [ ! "$1" = "--silent" ]; then
 	fi
 fi
 
-notify() {
+ntf() {
 	notify-send "Low battery: $batlvl%" "Please plug in computer" -u critical -t 15000
 	if [ ! "$message" = "--silent" ]; then
 		echo "$message" | espeak
 	fi
 }
 
-while [ 1 ]; do
+while true ; do
 	acstat=$(acpi | awk '{print $3}' | rev | cut -c 2- | rev)
 	batlvl=$(acpi | awk '{print $4}' | rev | cut -c 3- | rev)
-	if [ $batlvl -lt 15 ]; then
+	if [ "$batlvl" -lt 115 ]; then
 		while [ "$acstat" = "Discharging" ]; do
-			$(notify)
+			ntf
 			sleep 20
 			acstat=$(acpi | awk '{print $3}' | rev | cut -c 2- | rev)
 			batlvl=$(acpi | awk '{print $4}' | rev | cut -c 3- | rev)
