@@ -26,9 +26,28 @@ lowbat > /dev/null 2>&1 &
 
 ## Options
 
-Two options are available.
+Two options are available:
+
++ `--say [MESSAGE]`
++ `--silent`
+
+### Definitions
+
+`--say "message"` will allow you to set your own warning message lowbat is active.
+
+#### Example:
+
 ```shell
-lowbat --say ""
+lowbat --say "your custom message" > /dev/null 2>&1
+```
+
+`--silent` disables audio warnings.
+
+#### Example:
+
+```shell
+lowbat --silent > /dev/null 2>&1
+```
 
 ## Uninstallation
 
