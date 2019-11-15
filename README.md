@@ -1,6 +1,7 @@
 # lowbat
 
-Very small script that runs in the background and warns you when your battery is low until you plug your laptop in. It is **POSIX-compliant**, which is nice.
+Very small script that runs in the background and warns you when your battery is low until you plug your laptop in.
+It also is POSIX-compliant, which is nice.
 
 ## Dependencies
 
