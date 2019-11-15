@@ -41,7 +41,7 @@ Two options are available:
 ```shell
 lowbat --say "your custom message" > /dev/null 2>&1
 ```
-====
+---
 
 `--silent` disables audio warnings.
 
