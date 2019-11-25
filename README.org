@@ -21,7 +21,7 @@ Next you must find a way to get the script running right after loging in. Add th
 lowbat > /dev/null 2>&1 &
 #+END_SRC
 
-/Note:/ Make sure ~dunst~ is running in the background. In your startup programs manager/rc:
+/Note:/ to get notifications, make sure ~dunst~ is running in the background. In your startup programs manager/rc:
 #+BEGIN_SRC shell
 dunst > /dev/null 2>&1 &
 #+END_SRC
