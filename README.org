@@ -33,11 +33,11 @@ Two options are available:
 
 **** Examples of use:
 #+BEGIN_SRC shell
-lowbat --say "your custom message" > /dev/null 2>&1
+lowbat --say "your custom message" > /dev/null 2>&1 &
 #+END_SRC
 
 #+BEGIN_SRC shell
-lowbat --silent > /dev/null 2>&1
+lowbat --silent > /dev/null 2>&1 &
 #+END_SRC
 
 ** Uninstallation
