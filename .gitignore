@@ -1,5 +1,39 @@
-# Created by https://www.gitignore.io/api/zsh,linux,emacs
-# Edit at https://www.gitignore.io/?templates=zsh,linux,emacs
+# Created by https://www.gitignore.io/api/c++,linux,emacs
+# Edit at https://www.gitignore.io/?templates=c++,linux,emacs
+
+### C++ ###
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
 
 ### Emacs ###
 # -*- mode: gitignore; -*-
@@ -66,37 +100,7 @@ flycheck_*.el
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
 
-### Zsh ###
-# Zsh compiled script + zrecompile backup
-*.zwc
-*.zwc.old
-
-# Zsh completion-optimization dumpfile
-*zcompdump*
-
-# Zsh zcalc history
-.zcalc_history
-
-# A popular plugin manager's files
-._zplugin
-.zplugin_lstupd
-
-# zdharma/zshelldoc tool's files
-zsdoc/data
-
-# robbyrussell/oh-my-zsh/plugins/per-directory-history plugin's files
-# (when set-up to store the history in the local directory)
-.directory_history
-
-# MichaelAquilina/zsh-autoswitch-virtualenv plugin's files
-# (for Zsh plugins using Python)
-.venv
-
-# Zunit tests' output
-/tests/_output/*
-!/tests/_output/.gitkeep
-
-# End of https://www.gitignore.io/api/zsh,linux,emacs
+# End of https://www.gitignore.io/api/c++,linux,emacs
 
 bin/*
 lowbat

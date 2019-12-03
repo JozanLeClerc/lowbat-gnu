@@ -1,6 +1,6 @@
 #include <jo_lowbat.hpp>
 
-void
+int
 jo_notify(const string batlvl) {
 	string		str  = nullptr;
 	const char	*cmd = nullptr;
@@ -10,10 +10,10 @@ jo_notify(const string batlvl) {
 	str += "%\" \"Please plug in computer\" -u critical -t 15000";
 
 	cmd = str.c_str();
-	system(cmd);
+	return system(cmd);
 }
 
-void
+int
 jo_speak(const string msg) {
 	string		str  = nullptr;
 	const char	*cmd = nullptr;
@@ -22,5 +22,5 @@ jo_speak(const string msg) {
 	str += msg;
 	str += "\" | espeak";
 	cmd = str.c_str();
-	system(cmd);
+	return system(cmd);
 }

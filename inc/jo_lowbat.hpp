@@ -15,8 +15,8 @@ using namespace std;
 using namespace this_thread;
 using namespace chrono;
 
-void	jo_notify(const string);
-void	jo_speak (const string);
+int		jo_notify(const string);
+int		jo_speak (const string);
 string	jo_exec  (const char*);
 
 #endif
