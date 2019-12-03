@@ -2,10 +2,11 @@
 
 default: all 
 
-SHELL
+SHELL		:= /bin/sh
 SRCS_DIR	= src/
 INCS_DIR	= inc/
 OBJS_DIR	= obj/
+TRGT_DIR	= bin/
 
 SRCS		= ${SRCS_DIR}main.cpp
 SRCS		+= ${SRCS_DIR}jo_exec.cpp
@@ -25,7 +26,11 @@ FSANITIZE	= -fsanitize=address
 
 OPTIMIZE	= -O2
 
-TARGET		= lowbat
+CFLAGS		+= ${OPTIMIZE}
+
+NAME		= ${TRGT_DIR}lowbat
+
+MKDIR		= mkdir -p
 
 OS			= $(shell uname -s)
 ifeq ($(OS), Darwin)
@@ -35,7 +40,15 @@ else
 endif
 MANPREFIX	= $(PREFIX)/share/man
 
-install:
+${OBJS_DIR}%.o:	${SRCS_DIR}%.cpp ${INCS_DIR}${INCS}
+	@${MKDIR} ${OBJS_DIR}
+
+${NAME}:	${OBJS}
+	${CC} ${CFLAGS} -o ${TARGET} ${OBJS}
+
+all:
+	@${MAKE} -j5 ${NAME}
+install:	all
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
 	cp -f bin/lowbat $(DESTDIR)$(PREFIX)/bin/
 	chmod 755 $(DESTDIR)$(PREFIX)/bin/lowbat
