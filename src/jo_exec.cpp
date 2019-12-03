@@ -1,4 +1,6 @@
 #include <jo_lowbat.hpp>
+#include <array>
+#include <memory>
 
 string
 jo_exec(const char* cmd) {

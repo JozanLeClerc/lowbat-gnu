@@ -1,5 +1,11 @@
 #include <jo_lowbat.hpp>
+#include <cstring>
+#include <thread>
+#include <chrono>
 #include <algorithm>
+
+using namespace this_thread;
+using namespace chrono;
 
 int main(int argc, const char *argv[]) {
 	string			msg;
