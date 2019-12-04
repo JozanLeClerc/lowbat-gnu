@@ -24,7 +24,7 @@ int main(int argc, const char *argv[]) {
 		acstat.erase(remove(acstat.begin(), acstat.end(), '\n'), acstat.end());
 		batlvl.erase(remove(batlvl.begin(), batlvl.end(), '\n'), batlvl.end());
 		batlvlint = stoi(batlvl);
-		if (batlvlint < 90) {
+		if (batlvlint < 15) {
 			while (!strcmp(acstat.c_str(), "Discharging")) {
 				jo_notify(batlvl);
 				if (strcmp(arg_one.c_str(), "--silent")) {
