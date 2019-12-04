@@ -1,4 +1,5 @@
 #include <jo_lowbat.hpp>
+#include <iostream>
 #include <cstring>
 #include <thread>
 #include <chrono>
@@ -15,6 +16,10 @@ int main(int argc, const char *argv[]) {
 	string	arg_two;
 	int		batlvlint;
 
+	if (system("acpi > /dev/null 2>&1")) {
+		cout << "acpi is not installed. Please install it in order to run lowbat." << endl;
+		return 1;
+	}
 	if (argc > 1) {
 		arg_one = argv[1];
 	}
