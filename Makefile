@@ -36,8 +36,7 @@ OPTIMIZE	= -O2
 CFLAGS		= -Wall
 CFLAGS	 	+= -Wextra
 CFLAGS	 	+= -Werror
-#CFLAGS		+= ${OPTIMIZE}
-CFLAGS		+= ${DEBUG}
+CFLAGS		+= ${OPTIMIZE}
 #------------------------------------------------------------------------------#
 NAME		= lowbat
 #==============================================================================#
