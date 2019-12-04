@@ -4,7 +4,7 @@ int
 jo_notify(const string batlvl) {
 	string		str;
 
-	str = "notify-send \"";
+	str = "notify-send \"Low battery: ";
 	str += batlvl;
 	str += "%\" \"Please plug in computer\" -u critical -t 15000";
 
