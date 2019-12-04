@@ -46,5 +46,7 @@ int main(int argc, const char *argv[]) {
 		}
 		sleep_for(seconds(240));
 	}
+	delete batlvl;
+	delete acstat;
 	return 0;
 }
