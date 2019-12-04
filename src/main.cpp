@@ -24,7 +24,7 @@ int main(int argc, const char *argv[]) {
 		batlvl.erase(remove(batlvl.begin(), batlvl.end(), '\n'), batlvl.end());
 		batlvlint = stoi(batlvl);
 		cout << batlvlint << "%" << endl;
-		while (batlvlint < 60 && !system("acpi | grep -q Discharging")) {
+		while (batlvlint < 15 && !system("acpi | grep -q Discharging")) {
 			jo_notify(batlvl);
 			if (argc == 1) {
 				msg = new string("beep beep - low battery");
