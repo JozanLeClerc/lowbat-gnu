@@ -8,23 +8,19 @@ lowbat \- Lightweight battery warning utility
 [\fB\-\-say\fR \fIMESSAGE\fR]
 [\fB\-\-silent\fR]
 .SH DESCRIPTION
-.BR lowbat
-is a small script meant to be run in the background.
-It warns you using
-.BR notify\-send
-and
-.BR espeak
-when your battery is falling under 15%.
+\fBlowbat\fR is a small program meant to be run in the background.
+It warns you using \fBnotify\-send\fR and \fBespeak\fR when your battery is falling under 15%.
+\fBlowbat\fR gets battery informations using \fBacpi\fR.
 .SH OPTIONS
 .TP
 .BR \-\-say =\fIMESSAGE\fR
-Sets a custom message.
+Sets a custom audio message.
 .TP
 .BR \-\-silent
-Disables \fBespeak\fR.
+Disables audio messages.
 .SH BUGS
 No known bugs.
 .SH AUTHOR
 Joe
 .SH SEE ALSO
-dunst(1), notify-send(1), espeak(1)
+dunst(1), notify-send(1), espeak(1), acpi(1)
