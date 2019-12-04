@@ -1,6 +1,6 @@
 .POSIX:
 
-default: all 
+default: all
 
 SHELL		:= /bin/sh
 
