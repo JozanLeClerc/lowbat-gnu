@@ -24,9 +24,14 @@ int main(int argc, const char *argv[]) {
 		batlvl.erase(remove(batlvl.begin(), batlvl.end(), '\n'), batlvl.end());
 		batlvlint = stoi(batlvl);
 		cout << batlvlint << "%" << endl;
-		while (batlvlint < 25 && !system("acpi | grep -q Discharging")) {
+		while (batlvlint < 60 && !system("acpi | grep -q Discharging")) {
 			jo_notify(batlvl);
-			if (argc > 1 && strcmp(argv[1], "--silent")) {
+			if (argc == 1) {
+				msg = new string("beep beep - low battery");
+				jo_speak(*msg);
+				delete msg;
+			}
+			else if (argc > 1 && strcmp(argv[1], "--silent")) {
 				if (argc > 2 && !strcmp(argv[1], "--say")) {
 					msg = new string(argv[2]);
 				}
