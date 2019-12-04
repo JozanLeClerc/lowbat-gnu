@@ -15,6 +15,7 @@ int main(int argc, const char *argv[]) {
 	string	arg_two;
 	int		batlvlint;
 
+	msg = "Beep beep - low battery";
 	if (argc > 1) {
 		arg_one = argv[1];
 		if (argc > 2)
@@ -23,9 +24,6 @@ int main(int argc, const char *argv[]) {
 			if (!memcmp(arg_one.c_str(), "--say", strlen("--say")))
 				msg = arg_two;
 		}
-	}
-	else {
-		msg = "Beep beep - low battery";
 	}
 
 	while (true) {
