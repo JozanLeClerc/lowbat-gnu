@@ -12,31 +12,27 @@ int main(int argc, const char *argv[]) {
 	string*	msg;
 	string	acstat;
 	string	batlvl;
-	string	arg_one;
 	int		batlvlint;
 
 	if (system("acpi > /dev/null 2>&1")) {
 		cout << "acpi is not installed. Please install it in order to run lowbat." << endl;
 		return 1;
 	}
-	if (argc > 1) {
-		arg_one = argv[1];
-	}
 	while (true) {
+		cout << "Fetching batlvl: ";
 		batlvl = jo_exec("acpi | awk '{print $4}' | rev | cut -c 3- | rev");
 		batlvl.erase(remove(batlvl.begin(), batlvl.end(), '\n'), batlvl.end());
 		batlvlint = stoi(batlvl);
+		cout << batlvlint << "%" << endl;
 		while (batlvlint < 25 && !system("acpi | grep -q Discharging")) {
-			cout << "Notifying" << endl;
 			jo_notify(batlvl);
-			if (strcmp(arg_one.c_str(), "--silent")) {
-				if (argc > 2 && !strcmp(arg_one.c_str(), "--say")) {
+			if (argc > 1 && strcmp(argv[1], "--silent")) {
+				if (argc > 2 && !strcmp(argv[1], "--say")) {
 					msg = new string(argv[2]);
 				}
 				else {
 					msg = new string("beep beep - low battery");
 				}
-				cout << "Speaking" << endl;
 				jo_speak(*msg);
 				delete msg;
 			}

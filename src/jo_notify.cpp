@@ -1,4 +1,5 @@
 #include <jo_lowbat.hpp>
+#include <iostream>
 
 int
 jo_notify(const string batlvl) {
@@ -7,6 +8,7 @@ jo_notify(const string batlvl) {
 	str = "notify-send \"Low battery: ";
 	str += batlvl;
 	str += "%\" \"Please plug in computer\" -u critical -t 15000";
+	cout << "Notifying" << endl;
 	return system(str.c_str());
 }
 
@@ -17,5 +19,6 @@ jo_speak(const string msg) {
 	str = "echo \"";
 	str += msg;
 	str += "\" | espeak";
+	cout << "Speaking" << endl;
 	return system(str.c_str());
 }
