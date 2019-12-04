@@ -8,7 +8,7 @@ using namespace this_thread;
 using namespace chrono;
 
 int main(int argc, const char *argv[]) {
-	string	msg;
+	string*	msg;
 	string	acstat;
 	string	batlvl;
 	string	arg_one;
@@ -30,12 +30,13 @@ int main(int argc, const char *argv[]) {
 				if (strcmp(arg_one.c_str(), "--silent")) {
 					if (argc > 2 && !strcmp(arg_one.c_str(), "--say")) {
 						arg_two = argv[2];
-						msg = arg_two;
+						msg = new string(arg_two);
 					}
 					else {
-						msg = "beep beep - low battery";
+						msg = new string("beep beep - low battery");
 					}
-					jo_speak(msg);
+					jo_speak(*msg);
+					delete msg;
 				}
 				sleep_for(seconds(20));
 				acstat.clear();
