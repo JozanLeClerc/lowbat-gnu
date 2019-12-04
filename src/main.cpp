@@ -13,7 +13,6 @@ int main(int argc, const char *argv[]) {
 	string	acstat;
 	string	batlvl;
 	string	arg_one;
-	string	arg_two;
 	int		batlvlint;
 
 	if (system("acpi > /dev/null 2>&1")) {
@@ -24,34 +23,30 @@ int main(int argc, const char *argv[]) {
 		arg_one = argv[1];
 	}
 	while (true) {
-		acstat = jo_exec("acpi | awk '{print $3}' | rev | cut -c 2- | rev");
 		batlvl = jo_exec("acpi | awk '{print $4}' | rev | cut -c 3- | rev");
-		acstat.erase(remove(acstat.begin(), acstat.end(), '\n'), acstat.end());
 		batlvl.erase(remove(batlvl.begin(), batlvl.end(), '\n'), batlvl.end());
 		batlvlint = stoi(batlvl);
-		if (batlvlint < 15) {
-			while (!strcmp(acstat.c_str(), "Discharging")) {
-				jo_notify(batlvl);
-				if (strcmp(arg_one.c_str(), "--silent")) {
-					if (argc > 2 && !strcmp(arg_one.c_str(), "--say")) {
-						arg_two = argv[2];
-						msg = new string(arg_two);
-					}
-					else {
-						msg = new string("beep beep - low battery");
-					}
-					jo_speak(*msg);
-					delete msg;
+		while (batlvlint < 25 && !system("acpi | grep -q Discharging")) {
+			cout << "Notifying" << endl;
+			jo_notify(batlvl);
+			if (strcmp(arg_one.c_str(), "--silent")) {
+				if (argc > 2 && !strcmp(arg_one.c_str(), "--say")) {
+					msg = new string(argv[2]);
 				}
-				sleep_for(seconds(20));
-				acstat.clear();
-				batlvl.clear();
-				acstat = jo_exec("acpi | awk '{print $3}' | rev | cut -c 2- | rev");
-				batlvl = jo_exec("acpi | awk '{print $4}' | rev | cut -c 3- | rev");
-				acstat.erase(remove(acstat.begin(), acstat.end(), '\n'), acstat.end());
-				batlvl.erase(remove(batlvl.begin(), batlvl.end(), '\n'), batlvl.end());
+				else {
+					msg = new string("beep beep - low battery");
+				}
+				cout << "Speaking" << endl;
+				jo_speak(*msg);
+				delete msg;
 			}
+			cout << "Sleep for 20s" << endl;
+			sleep_for(seconds(20));
+			batlvl.clear();
+			batlvl = jo_exec("acpi | awk '{print $4}' | rev | cut -c 3- | rev");
+			batlvl.erase(remove(batlvl.begin(), batlvl.end(), '\n'), batlvl.end());
 		}
+		cout << "Sleep for 4m" << endl;
 		sleep_for(seconds(240));
 	}
 
