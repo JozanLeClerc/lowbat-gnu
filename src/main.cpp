@@ -15,17 +15,9 @@ int main(int argc, const char *argv[]) {
 	string	arg_two;
 	int		batlvlint;
 
-	msg = "beep beep - low battery";
 	if (argc > 1) {
 		arg_one = argv[1];
-		if (argc > 2)
-		{
-			arg_two = argv[2];
-			if (!strcmp(arg_one.c_str(), "--say"))
-				msg = arg_two;
-		}
 	}
-
 	while (true) {
 		acstat = jo_exec("acpi | awk '{print $3}' | rev | cut -c 2- | rev");
 		batlvl = jo_exec("acpi | awk '{print $4}' | rev | cut -c 3- | rev");
@@ -35,9 +27,19 @@ int main(int argc, const char *argv[]) {
 		if (batlvlint < 90) {
 			while (!strcmp(acstat.c_str(), "Discharging")) {
 				jo_notify(batlvl);
-				if (strcmp(arg_one.c_str(), "--silent"))
+				if (strcmp(arg_one.c_str(), "--silent")) {
+					if (argc > 2 && !strcmp(arg_one.c_str(), "--say")) {
+						arg_two = argv[2];
+						msg = arg_two;
+					}
+					else {
+						msg = "beep beep - low battery";
+					}
 					jo_speak(msg);
+				}
 				sleep_for(seconds(20));
+				acstat.clear();
+				batlvl.clear();
 				acstat = jo_exec("acpi | awk '{print $3}' | rev | cut -c 2- | rev");
 				batlvl = jo_exec("acpi | awk '{print $4}' | rev | cut -c 3- | rev");
 				acstat.erase(remove(acstat.begin(), acstat.end(), '\n'), acstat.end());
@@ -46,7 +48,6 @@ int main(int argc, const char *argv[]) {
 		}
 		sleep_for(seconds(240));
 	}
-	delete batlvl;
-	delete acstat;
+
 	return 0;
 }
