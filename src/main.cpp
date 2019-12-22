@@ -46,6 +46,7 @@ int main(int argc, const char *argv[]) {
 			batlvl.clear();
 			batlvl = jo_exec("acpi | awk '{print $4}' | rev | cut -c 3- | rev");
 			batlvl.erase(remove(batlvl.begin(), batlvl.end(), '\n'), batlvl.end());
+			batlvlint = stoi(batlvl);
 		}
 		cout << "Sleep for 4m" << endl;
 		sleep_for(seconds(240));
