@@ -30,17 +30,12 @@ dunst > /dev/null 2>&1 &
 #+END_SRC
 
 ** Options
-Two options are available:
-- ~--say [MESSAGE]~ allows you to set your own warning message lowbat is active.
-- ~--silent~ disables audio warnings.
+Only one option is available:
+- ~--say [MESSAGE]~ allows you to set an audio warning message when lowbat is active. By default ~lowbat~ doesn't send audio notifications and will only use ~notify-send~.
 
 **** Examples of use:
 #+BEGIN_SRC shell
 lowbat --say "your custom message" > /dev/null 2>&1 &
-#+END_SRC
-
-#+BEGIN_SRC shell
-lowbat --silent > /dev/null 2>&1 &
 #+END_SRC
 
 ** Uninstallation

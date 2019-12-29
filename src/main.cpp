@@ -26,7 +26,7 @@ int main(int argc, const char *argv[]) {
 		}
 	}
 	while (true) {
-		while (lowbat.jo_fetchBatlvl() < 115 && !lowbat.jo_fetchAcstat()) {
+		while (lowbat.jo_fetchBatlvl() < 15 && !lowbat.jo_fetchAcstat()) {
 			if (lowbat.jo_notify()) {
 				cout << "Error: could not use notify-send" << endl;
 				return 3;
