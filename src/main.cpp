@@ -1,6 +1,6 @@
 #include <jo_lowbat.hpp>
 #include <iostream>
-#include <cstring>
+#include <cstdint>
 #include <thread>
 #include <chrono>
 
@@ -8,32 +8,28 @@ using namespace this_thread;
 using namespace chrono;
 
 int main(int argc, const char *argv[]) {
-	string*	msg;
-	string	acstat;
-	string	batlvl;
-	int		batlvlint;
-	(void)argc;
-	(void)argv;
-	(void)msg;
-	(void)batlvl;
-	(void)batlvlint;
-	(void)acstat;
+	Lowbat	lowbat;
+	uint8_t	speaks;
 
-	Lowbat lowbat;
+	speaks = 0;
 	if (lowbat.jo_testAcpi())
-		return (1);
+		return 1;
+	if (lowbat.jo_testNotifySend())
+		return 2;
+	if (argc > 2 && !strcmp(argv[1], "--say")) {
+		if (lowbat.jo_testEspeak()) {
+			lowbat.jo_setMsg(argv[2]);
+			speaks = 1;
+		}
+	}
 	while (true) {
-		while (lowbat.jo_fetchBatlvl() < 115 && !system("acpi | grep -q Discharging")) {
-			lowbat.jo_notify();
-			if (argc > 1 && strcmp(argv[1], "--silent")) {
-				if (argc > 2 && !strcmp(argv[1], "--say")) {
-					msg = new string(argv[2]);
-				}
-				else {
-					msg = new string("beep beep - low battery");
-				}
-				jo_speak(*msg);
-				delete msg;
+		while (lowbat.jo_fetchBatlvl() < 115 && !lowbat.jo_fetchAcstat()) {
+			if (lowbat.jo_notify()) {
+				cout << "Error: could not use notify-send" << endl;
+				return 3;
+			}
+			if (speaks && lowbat.jo_speak()) {
+				cout << "Error: could not use espeak" << endl;
 			}
 			cout << "Sleep for 20s" << endl;
 			sleep_for(seconds(20));
@@ -41,6 +37,5 @@ int main(int argc, const char *argv[]) {
 		cout << "Sleep for 4m" << endl;
 		sleep_for(seconds(240));
 	}
-
 	return 0;
 }

@@ -10,8 +10,6 @@ OBJS_DIR	= obj/
 TRGT_DIR	= bin/
 
 SRCS_NAME	= main.cpp
-#SRCS_NAME	+= jo_exec.cpp
-SRCS_NAME	+= jo_notify.cpp
 SRCS_NAME	+= jo_lowbat.cpp
 
 SRCS		= $(addprefix ${SRCS_DIR}, ${SRCS_NAME})
@@ -34,7 +32,7 @@ CXXFLAGS	 	+= -Wextra
 CXXFLAGS	 	+= -Werror
 #CXXFLAGS		+= ${OPTIMIZE}
 CXXFLAGS		+= ${DEBUG}
-CXXFLAGS		+= ${FSANITIZE}
+#CXXFLAGS		+= ${FSANITIZE}
 
 NAME		= lowbat
 

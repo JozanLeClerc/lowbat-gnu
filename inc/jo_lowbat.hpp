@@ -9,13 +9,18 @@ using namespace std;
 class Lowbat {
 public:
 	uint8_t			jo_testAcpi(void);
+	uint8_t			jo_testNotifySend(void);
+	void			jo_testEspeak(void);
 	int				jo_fetchBatlvl(void);
+	int				jo_fetchAcstat(void);
 	int				jo_notify(void);
-	int				jo_speak(const string);
+	int				jo_speak(void);
+	void			jo_setMsg(const char *msg);
 	static string	jo_exec(const char*);
 
 private:
 	string	m_batlvl;
+	string	m_msg;
 };
 
 #endif
