@@ -49,7 +49,7 @@ int
 Lowbat::jo_fetchAcstat(void) {
 	int	ret;
 
-	cout << "Fetching acstat: "
+	cout << "Fetching acstat: ";
 	ret = system("acpi | grep -q Discharging");
 	if (ret != 0)
 		cout << "Charging" << endl;

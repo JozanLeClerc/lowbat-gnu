@@ -20,7 +20,7 @@ int main(int argc, const char *argv[]) {
 		return 2;
 	}
 	if (argc > 2 && !strcmp(argv[1], "--say")) {
-		if (lowbat.jo_testEspeak()) {
+		if (!lowbat.jo_testEspeak()) {
 			lowbat.jo_setMsg(argv[2]);
 			speaks = 1;
 		}
