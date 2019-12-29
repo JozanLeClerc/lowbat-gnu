@@ -17,17 +17,19 @@ INCS		= jo_lowbat.hpp
 
 OBJS		= $(patsubst ${SRCS_DIR}%.cpp,${OBJS_DIR}%.o,${SRCS})
 
-CC			= g++
-
-DEBUG		= -g3
+DEBUG		+= Og -ggdb
+DEBUG		= -ggdb
 FSANITIZE	= -fsanitize=address
 
-OPTIMIZE	= -O3
+CXX			= g++
 
-CFLAGS		= -Wall
-CFLAGS	 	+= -Wextra
-CFLAGS	 	+= -Werror
-CFLAGS		+= ${OPTIMIZE}
+OPTIMIZE	= -O2
+OPTIMIZE	+= -pipe
+
+CXXFLAGS		= -Wall
+CXXFLAGS	 	+= -Wextra
+CXXFLAGS	 	+= -Werror
+CXXFLAGS		+= ${OPTIMIZE}
 
 NAME		= lowbat
 
@@ -45,11 +47,11 @@ MANPREFIX	= $(PREFIX)/share/man
 
 ${OBJS_DIR}%.o:		${SRCS_DIR}%.cpp ${INCS_DIR}${INCS}
 	@${MKDIR} ${OBJS_DIR}
-	${CC} ${CFLAGS} -I${INCS_DIR} -c -o $@ $<
+	${CXX} ${CXXFLAGS} -I${INCS_DIR} -c -o $@ $<
 
 ${NAME}:			${OBJS}
 	@${MKDIR} ${TRGT_DIR}
-	${CC} ${CFLAGS} -o ${TRGT_DIR}${NAME} ${OBJS}
+	${CXX} ${CXXFLAGS} -o ${TRGT_DIR}${NAME} ${OBJS}
 
 all:				${NAME}
 
