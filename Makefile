@@ -9,9 +9,11 @@ INCS_DIR	= inc/
 OBJS_DIR	= obj/
 TRGT_DIR	= bin/
 
-SRCS		= ${SRCS_DIR}main.cpp
-SRCS		+= ${SRCS_DIR}jo_exec.cpp
-SRCS		+= ${SRCS_DIR}jo_notify.cpp
+SRCS_NAME	= main.cpp
+SRCS_NAME	+= jo_exec.cpp
+SRCS_NAME	+= jo_notify.cpp
+
+SRCS		= $(addprefix ${SRCS_DIR}, ${SRCS_NAME})
 
 INCS		= jo_lowbat.hpp
 
@@ -29,7 +31,9 @@ OPTIMIZE	+= -pipe
 CXXFLAGS		= -Wall
 CXXFLAGS	 	+= -Wextra
 CXXFLAGS	 	+= -Werror
-CXXFLAGS		+= ${OPTIMIZE}
+#CXXFLAGS		+= ${OPTIMIZE}
+CXXFLAGS		+= ${DEBUG}
+CXXFLAGS		+= ${FSANITIZE}
 
 NAME		= lowbat
 
@@ -46,11 +50,11 @@ MANPREFIX	= $(PREFIX)/share/man
 
 
 ${OBJS_DIR}%.o:		${SRCS_DIR}%.cpp ${INCS_DIR}${INCS}
-	@${MKDIR} ${OBJS_DIR}
+	${MKDIR} ${OBJS_DIR}
 	${CXX} ${CXXFLAGS} -I${INCS_DIR} -c -o $@ $<
 
 ${NAME}:			${OBJS}
-	@${MKDIR} ${TRGT_DIR}
+	${MKDIR} ${TRGT_DIR}
 	${CXX} ${CXXFLAGS} -o ${TRGT_DIR}${NAME} ${OBJS}
 
 all:				${NAME}
