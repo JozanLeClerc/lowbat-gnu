@@ -1,5 +1,6 @@
 #include <jo_lowbat.hpp>
 #include <iostream>
+#include <cstring>
 #include <cstdint>
 #include <thread>
 #include <chrono>
@@ -12,10 +13,12 @@ int main(int argc, const char *argv[]) {
 	uint8_t	speaks;
 
 	speaks = 0;
-	if (lowbat.jo_testAcpi())
+	if (lowbat.jo_testAcpi()) {
 		return 1;
-	if (lowbat.jo_testNotifySend())
+	}
+	if (lowbat.jo_testNotifySend()) {
 		return 2;
+	}
 	if (argc > 2 && !strcmp(argv[1], "--say")) {
 		if (lowbat.jo_testEspeak()) {
 			lowbat.jo_setMsg(argv[2]);

@@ -10,7 +10,7 @@ class Lowbat {
 public:
 	uint8_t			jo_testAcpi(void);
 	uint8_t			jo_testNotifySend(void);
-	void			jo_testEspeak(void);
+	uint8_t			jo_testEspeak(void);
 	int				jo_fetchBatlvl(void);
 	int				jo_fetchAcstat(void);
 	int				jo_notify(void);

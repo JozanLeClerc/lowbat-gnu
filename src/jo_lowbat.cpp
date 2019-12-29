@@ -22,11 +22,11 @@ Lowbat::jo_testNotifySend(void) {
 		cout << "notify-send is not installed. Please install it in order to run lowbat" << endl;
 		return 1;
 	}
-	cout << "notify-send is installed"
+	cout << "notify-send is installed" << endl;
 	return 0;
 }
 
-void
+uint8_t
 Lowbat::jo_testEspeak(void) {
 	if (system("which espeak > /dev/null 2>&1")) {
 		cout << "espeak is not installed. Please install it in order to run --say option" << endl;
@@ -47,11 +47,14 @@ Lowbat::jo_fetchBatlvl(void) {
 
 int
 Lowbat::jo_fetchAcstat(void) {
-	const int	ret = system("acpi | grep -q Discharging");
+	int	ret;
+
+	cout << "Fetching acstat: "
+	ret = system("acpi | grep -q Discharging");
 	if (ret != 0)
-		cout << ret << "acstat: Charging" << endl;
+		cout << "Charging" << endl;
 	else
-		cout << "acstat: Discharging" << endl;
+		cout << "Discharging" << endl;
 	return ret;
 }
 
