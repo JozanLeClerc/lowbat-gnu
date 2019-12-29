@@ -14,10 +14,9 @@ int main(int argc, const char *argv[]) {
 	string	batlvl;
 	int		batlvlint;
 
-	if (system("acpi > /dev/null 2>&1")) {
-		cout << "acpi is not installed. Please install it in order to run lowbat." << endl;
-		return 1;
-	}
+	Lowbat lowbat;
+	if (lowbat.jo_testAcpi())
+		return (1);
 	while (true) {
 		cout << "Fetching batlvl: ";
 		batlvl = jo_exec("acpi | awk '{print $4}' | rev | cut -c 3- | rev");

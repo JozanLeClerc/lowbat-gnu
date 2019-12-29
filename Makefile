@@ -12,6 +12,7 @@ TRGT_DIR	= bin/
 SRCS_NAME	= main.cpp
 SRCS_NAME	+= jo_exec.cpp
 SRCS_NAME	+= jo_notify.cpp
+SRCS_NAME	+= jo_lowbat.cpp
 
 SRCS		= $(addprefix ${SRCS_DIR}, ${SRCS_NAME})
 
@@ -50,13 +51,11 @@ MANPREFIX	= $(PREFIX)/share/man
 
 
 ${OBJS_DIR}%.o:		${SRCS_DIR}%.cpp ${INCS_DIR}${INCS}
-ifeq ("$(wildcard ${OBJS_DIR})","")
-	${MKDIR} ${OBJS_DIR}
-endif
+	@${MKDIR} ${OBJS_DIR}
 	${CXX} ${CXXFLAGS} -I${INCS_DIR} -c -o $@ $<
 
 ${NAME}:			${OBJS}
-	${MKDIR} ${TRGT_DIR}
+	@${MKDIR} ${TRGT_DIR}
 	${CXX} ${CXXFLAGS} -o ${TRGT_DIR}${NAME} ${OBJS}
 
 all:				${NAME}
