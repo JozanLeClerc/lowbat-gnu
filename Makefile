@@ -30,8 +30,8 @@ OPTIMIZE	+= -pipe
 CXXFLAGS		= -Wall
 CXXFLAGS	 	+= -Wextra
 CXXFLAGS	 	+= -Werror
-#CXXFLAGS		+= ${OPTIMIZE}
-CXXFLAGS		+= ${DEBUG}
+CXXFLAGS		+= ${OPTIMIZE}
+#CXXFLAGS		+= ${DEBUG}
 #CXXFLAGS		+= ${FSANITIZE}
 
 NAME		= lowbat
@@ -50,7 +50,7 @@ MANPREFIX	= $(PREFIX)/share/man
 
 ${OBJS_DIR}%.o:		${SRCS_DIR}%.cpp ${INCS_DIR}${INCS}
 	@${MKDIR} ${OBJS_DIR}
-	${CXX} ${CXXFLAGS} -I${INCS_DIR} -c -o $@ $<
+	${CXX} -c ${CXXFLAGS} -I${INCS_DIR} -o $@ $<
 
 ${NAME}:			${OBJS}
 	@${MKDIR} ${TRGT_DIR}
