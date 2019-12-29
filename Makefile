@@ -45,6 +45,7 @@ ifeq ($(OS), Darwin)
 else
 	PREFIX	= /usr
 endif
+
 MANPREFIX	= $(PREFIX)/share/man
 
 
@@ -52,11 +53,11 @@ ${OBJS_DIR}%.o:		${SRCS_DIR}%.cpp ${INCS_DIR}${INCS}
 	@${MKDIR} ${OBJS_DIR}
 	${CXX} -c ${CXXFLAGS} -I${INCS_DIR} -o $@ $<
 
-${NAME}:			${OBJS}
+${TRGT_DIR}${NAME}:			${OBJS}
 	@${MKDIR} ${TRGT_DIR}
 	${CXX} ${CXXFLAGS} -o ${TRGT_DIR}${NAME} ${OBJS}
 
-all:				${NAME}
+all:				${TRGT_DIR}${NAME}
 
 clean:
 	${RM} ${OBJS_DIR}
