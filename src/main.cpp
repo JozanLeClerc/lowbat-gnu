@@ -23,31 +23,21 @@ int main(int argc, const char *argv[]) {
 	if (lowbat.jo_testAcpi())
 		return (1);
 	while (true) {
-		lowbat.jo_fetchBatlvl();
-		// while (batlvlint < 15 && !system("acpi | grep -q Discharging")) {
-		// jo_notify(batlvl);
-		// if (argc == 1) {
-		// msg = new string("beep beep - low battery");
-		// jo_speak(*msg);
-		// delete msg;
-		// }
-		// else if (argc > 1 && strcmp(argv[1], "--silent")) {
-		// if (argc > 2 && !strcmp(argv[1], "--say")) {
-		// msg = new string(argv[2]);
-		// }
-		// else {
-		// msg = new string("beep beep - low battery");
-		// }
-		// jo_speak(*msg);
-		// delete msg;
-		// }
-		// cout << "Sleep for 20s" << endl;
-		// sleep_for(seconds(20));
-		// batlvl.clear();
-		// batlvl = jo_exec("acpi | awk '{print $4}' | rev | cut -c 3- | rev");
-		// batlvl.erase(remove(batlvl.begin(), batlvl.end(), '\n'), batlvl.end());
-		// batlvlint = stoi(batlvl);
-		// }
+		while (lowbat.jo_fetchBatlvl() < 115 && !system("acpi | grep -q Discharging")) {
+			lowbat.jo_notify();
+			if (argc > 1 && strcmp(argv[1], "--silent")) {
+				if (argc > 2 && !strcmp(argv[1], "--say")) {
+					msg = new string(argv[2]);
+				}
+				else {
+					msg = new string("beep beep - low battery");
+				}
+				jo_speak(*msg);
+				delete msg;
+			}
+			cout << "Sleep for 20s" << endl;
+			sleep_for(seconds(20));
+		}
 		cout << "Sleep for 4m" << endl;
 		sleep_for(seconds(240));
 	}

@@ -8,17 +8,14 @@ using namespace std;
 
 class Lowbat {
 public:
-	uint8_t	jo_testAcpi(void);
-	string	jo_exec(const char*);
-	string	jo_fetchBatlvl(void);
-	int		jo_notify(const string);
-	int		jo_speak(const string);
+	uint8_t			jo_testAcpi(void);
+	int				jo_fetchBatlvl(void);
+	int				jo_notify(void);
+	int				jo_speak(const string);
+	static string	jo_exec(const char*);
 
 private:
+	string	m_batlvl;
 };
-
-int		jo_notify(const string);
-int		jo_speak (const string);
-string	jo_exec  (const char*);
 
 #endif
