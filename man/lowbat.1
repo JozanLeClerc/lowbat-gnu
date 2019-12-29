@@ -1,13 +1,13 @@
 .\" Manpage for lowbat
 .\" Contact bousset.rudy@gmail.com to correct errors and typos.
-.TH lowbat 1 "15 Nov 2019" "lowbat 1.1" "Lowbat Reference"
+.TH lowbat 1 "29 Dec 2019" "lowbat 1.2" "Lowbat Reference"
 .SH NAME
 lowbat \- Lightweight battery warning utility
 .SH SYNOPSYS
 .B lowbat
 [\fB\-\-say\fR \fIMESSAGE\fR]
 .SH DESCRIPTION
-\fBlowbat\fR is a small program meant to be run in the background.
+\fBlowbat\fR is a small program meant to be run as a daemon.
 It warns you using \fBnotify\-send\fR when your battery is falling under 15%.
 \fBlowbat\fR gets battery informations using \fBacpi\fR and therefore will not run if not installed.
 \fBlowbat\fR can send audio notifications using \fBespeak\fR with the \fB--say\fR option.
