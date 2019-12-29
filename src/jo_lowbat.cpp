@@ -35,7 +35,7 @@ Lowbat::jo_fetchBatlvl(void) {
 	uint8_t batlvlint;
 
 	cout << "Fetching batlvl: ";
-	batlvl = this->jo_exec("acpi | awk '{print $4}' | rev | cut -c 3- | rev");
+	batlvl = Lowbat::jo_exec("acpi | awk '{print $4}' | rev | cut -c 3- | rev");
 	batlvl.erase(remove(batlvl.begin(), batlvl.end(), '\n'), batlvl.end());
 	batlvlint = stoi(batlvl);
 	cout << batlvlint << "%" << endl;

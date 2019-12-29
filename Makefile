@@ -10,7 +10,7 @@ OBJS_DIR	= obj/
 TRGT_DIR	= bin/
 
 SRCS_NAME	= main.cpp
-SRCS_NAME	+= jo_exec.cpp
+#SRCS_NAME	+= jo_exec.cpp
 SRCS_NAME	+= jo_notify.cpp
 SRCS_NAME	+= jo_lowbat.cpp
 
