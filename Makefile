@@ -50,7 +50,9 @@ MANPREFIX	= $(PREFIX)/share/man
 
 
 ${OBJS_DIR}%.o:		${SRCS_DIR}%.cpp ${INCS_DIR}${INCS}
+ifeq ("$(wildcard ${OBJS_DIR})","")
 	${MKDIR} ${OBJS_DIR}
+endif
 	${CXX} ${CXXFLAGS} -I${INCS_DIR} -c -o $@ $<
 
 ${NAME}:			${OBJS}
