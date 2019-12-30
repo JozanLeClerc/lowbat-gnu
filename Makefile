@@ -18,8 +18,7 @@ INCS		= jo_lowbat.hpp
 
 OBJS		= $(patsubst ${SRCS_DIR}%.cpp,${OBJS_DIR}%.o,${SRCS})
 
-DEBUG		= -Og
-DEBUG		+= -ggdb
+DEBUG		= -ggdb
 FSANITIZE	= -fsanitize=address
 
 CXX			= g++
