@@ -28,11 +28,11 @@ int main(int argc, const char *argv[]) {
 	while (true) {
 		while (lowbat.jo_fetchBatlvl() < 15 && !lowbat.jo_fetchAcstat()) {
 			if (lowbat.jo_notify()) {
-				cout << "Error: could not use notify-send" << endl;
+				cerr << "Error: could not use notify-send" << endl;
 				return 3;
 			}
 			if (speaks && lowbat.jo_speak()) {
-				cout << "Error: could not use espeak" << endl;
+				cerr << "Error: could not use espeak" << endl;
 			}
 			cout << "Sleep for 20s" << endl;
 			sleep_for(seconds(20));

@@ -9,7 +9,7 @@ using namespace std;
 uint8_t
 Lowbat::jo_testAcpi(void) {
 	if (system("which acpi > /dev/null 2>&1")) {
-		cout << "acpi is not installed. Please install it in order to run lowbat" << endl;
+		cerr << "acpi is not installed. Please install it in order to run lowbat" << endl;
 		return 1;
 	}
 	cout << "acpi is installed" << endl;
@@ -19,7 +19,7 @@ Lowbat::jo_testAcpi(void) {
 uint8_t
 Lowbat::jo_testNotifySend(void) {
 	if (system("which notify-send > /dev/null 2>&1")) {
-		cout << "notify-send is not installed. Please install it in order to run lowbat" << endl;
+		cerr << "notify-send is not installed. Please install it in order to run lowbat" << endl;
 		return 1;
 	}
 	cout << "notify-send is installed" << endl;
@@ -29,7 +29,7 @@ Lowbat::jo_testNotifySend(void) {
 uint8_t
 Lowbat::jo_testEspeak(void) {
 	if (system("which espeak > /dev/null 2>&1")) {
-		cout << "espeak is not installed. Please install it in order to run --say option" << endl;
+		cerr << "espeak is not installed. Please install it in order to run --say option" << endl;
 		return 1;
 	}
 	cout << "espeak is installed" << endl;
