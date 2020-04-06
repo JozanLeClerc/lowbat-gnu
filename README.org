@@ -2,7 +2,6 @@
 Very small program for GNU/Linux that runs in the background and warns you when your battery is low until you plug your laptop in.
 
 ** Dependencies
-- ~acpi~
 - ~libnotify~
 - ~espeak~
 - ~make~
