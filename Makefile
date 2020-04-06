@@ -23,15 +23,15 @@ FSANITIZE	= -fsanitize=address
 
 CXX			= g++
 
-OPTIMIZE	= -O2
+OPTIMIZE	 = -O2
 OPTIMIZE	+= -pipe
 
-CXXFLAGS		= -Wall
+CXXFLAGS		 = -Wall
 CXXFLAGS	 	+= -Wextra
 CXXFLAGS	 	+= -Werror
 CXXFLAGS		+= ${OPTIMIZE}
-#CXXFLAGS		+= ${DEBUG}
-#CXXFLAGS		+= ${FSANITIZE}
+# CXXFLAGS		+= ${DEBUG}
+# CXXFLAGS		+= ${FSANITIZE}
 
 NAME		= lowbat
 
@@ -41,12 +41,14 @@ RM			= rm -rf
 OS			= $(shell uname -s)
 ifeq ($(OS), Darwin)
 	PREFIX	= /usr/local
+endif
+ifeq ($(OS), FreeBSD)
+	PREFIX	= /usr/local
 else
 	PREFIX	= /usr
 endif
 
 MANPREFIX	= $(PREFIX)/share/man
-
 
 ${OBJS_DIR}%.o:		${SRCS_DIR}%.cpp ${INCS_DIR}${INCS}
 	@${MKDIR} ${OBJS_DIR}
@@ -56,17 +58,17 @@ ${TRGT_DIR}${NAME}:			${OBJS}
 	@${MKDIR} ${TRGT_DIR}
 	${CXX} ${CXXFLAGS} -o ${TRGT_DIR}${NAME} ${OBJS}
 
-all:				${TRGT_DIR}${NAME}
+all: ${TRGT_DIR}${NAME}
 
 clean:
 	${RM} ${OBJS_DIR}
 
-fclean:				clean
+fclean: clean
 	${RM} ${TRGT_DIR}
 
-re:					fclean all
+re: fclean all
 
-install:			all
+install: all
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
 	cp -f bin/lowbat $(DESTDIR)$(PREFIX)/bin/
 	chmod 755 $(DESTDIR)$(PREFIX)/bin/lowbat

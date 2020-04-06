@@ -13,15 +13,11 @@ int main(int argc, const char *argv[]) {
 	uint8_t	speaks;
 
 	speaks = 0;
-	if (lowbat.jo_testAcpi()) {
-		return 1;
-	}
 	if (lowbat.jo_testNotifySend()) {
-		return 2;
+		return (JO_RET_MISS_DEP);
 	}
 	if (argc > 2 && !strcmp(argv[1], "--say")) {
 		if (!lowbat.jo_testEspeak()) {
-			lowbat.jo_setMsg(argv[2]);
 			speaks = 1;
 		}
 	}
@@ -29,9 +25,12 @@ int main(int argc, const char *argv[]) {
 		while (lowbat.jo_fetchBatlvl() < 15 && !lowbat.jo_fetchAcstat()) {
 			if (lowbat.jo_notify()) {
 				cerr << "Error: could not use notify-send" << endl;
-				return 3;
+				return (JO_RET_NOTIFY_FAILED);
 			}
-			if (speaks && lowbat.jo_speak()) {
+			if (speaks) {
+				lowbat.jo_setMsg(argv[2]);
+				lowbat.jo_speak();
+				lowbat.jo_delMsg();
 				cerr << "Error: could not use espeak" << endl;
 			}
 			cout << "Sleep for 20s" << endl;
@@ -40,5 +39,5 @@ int main(int argc, const char *argv[]) {
 		cout << "Sleep for 4m" << endl;
 		sleep_for(seconds(240));
 	}
-	return 0;
+	return (JO_RET_FINE);
 }
